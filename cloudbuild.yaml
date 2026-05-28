@@ -1,5 +1,4 @@
 steps:
-  # Single Step: Install libraries and run the script in the same exact container
   - name: 'python:3.11-slim'
     id: 'Install Libraries and Run Ingestion Pipeline'
     entrypoint: 'bash'
@@ -7,7 +6,7 @@ steps:
       - '-c'
       - |
         pip install --no-cache-dir google-cloud-storage google-cloud-bigquery
-        python process_pipeline.py customers_batch_1.csv
+        python process_pipeline.py customers_batch_2.csv
 
 options:
   logging: CLOUD_LOGGING_ONLY
