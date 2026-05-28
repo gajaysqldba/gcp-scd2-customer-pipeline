@@ -1,0 +1,4 @@
+customer_id,name,email,subscription_tier,row_last_updated
+101,John Doe,john.doe@email.com,Free,2026-05-25 08:00:00
+102,Jane Smith,jane.smith@email.com,Premium,2026-05-25 08:30:00
+103,Vijay Kumar,vijay.k@email.com,Free,2026-05-25 09:00:00
