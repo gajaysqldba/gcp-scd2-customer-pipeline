@@ -14,3 +14,7 @@ steps:
       - |
         gcloud config get-value project
         echo "Milestone 1 Success: The fully automated Git push trigger works perfectly!"
+
+# 🌟 ADD THIS BLOCK AT THE VERY BOTTOM OF YOUR FILE:
+options:
+  logging: CLOUD_LOGGING_ONLY
