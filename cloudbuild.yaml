@@ -1,20 +1,15 @@
 steps:
-  # Step 1: Spin up a clean Google-managed Python environment and install tools
+  # Step 1: Spin up clean environment and install clients
   - name: 'python:3.11-slim'
     id: 'Install Data Engineering Libraries'
     entrypoint: 'pip'
     args: ['install', 'google-cloud-storage', 'google-cloud-bigquery']
 
-  # Step 2: Run a terminal command to verify Cloud Build can read your project details
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    id: 'Verify GCP Project Connection'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        gcloud config get-value project
-        echo "Milestone 1 Success: The fully automated Git push trigger works perfectly!"
+  # Step 2: Execute our custom pipeline processing script for Batch 1
+  - name: 'python:3.11-slim'
+    id: 'Process Customer Batch Ingestion'
+    entrypoint: 'python'
+    args: ['process_pipeline.py', 'customers_batch_1.csv']
 
-# 🌟 ADD THIS BLOCK AT THE VERY BOTTOM OF YOUR FILE:
 options:
   logging: CLOUD_LOGGING_ONLY
