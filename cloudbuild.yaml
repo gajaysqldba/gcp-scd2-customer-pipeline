@@ -1,15 +1,13 @@
 steps:
-  # Step 1: Spin up clean environment and install clients
+  # Single Step: Install libraries and run the script in the same exact container
   - name: 'python:3.11-slim'
-    id: 'Install Data Engineering Libraries'
-    entrypoint: 'pip'
-    args: ['install', 'google-cloud-storage', 'google-cloud-bigquery']
-
-  # Step 2: Execute our custom pipeline processing script for Batch 1
-  - name: 'python:3.11-slim'
-    id: 'Process Customer Batch Ingestion'
-    entrypoint: 'python'
-    args: ['process_pipeline.py', 'customers_batch_1.csv']
+    id: 'Install Libraries and Run Ingestion Pipeline'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        pip install --no-cache-dir google-cloud-storage google-cloud-bigquery
+        python process_pipeline.py customers_batch_1.csv
 
 options:
   logging: CLOUD_LOGGING_ONLY
