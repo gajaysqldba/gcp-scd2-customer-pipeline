@@ -1,0 +1,16 @@
+steps:
+  # Step 1: Spin up a clean Google-managed Python environment and install tools
+  - name: 'python:3.11-slim'
+    id: 'Install Data Engineering Libraries'
+    entrypoint: 'pip'
+    args: ['install', 'google-cloud-storage', 'google-cloud-bigquery']
+
+  # Step 2: Run a terminal command to verify Cloud Build can read your project details
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: 'Verify GCP Project Connection'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud config get-value project
+        echo "Milestone 1 Success: Cloud Build is natively connected and authorized!"
