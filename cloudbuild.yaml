@@ -13,4 +13,4 @@ steps:
       - '-c'
       - |
         gcloud config get-value project
-        echo "Milestone 1 Success: Cloud Build is natively connected and authorized!"
+        echo "Milestone 1 Success: The fully automated Git push trigger works perfectly!"
